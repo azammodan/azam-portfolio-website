@@ -44,9 +44,77 @@ src/
 │       ├── ContactWindow.tsx
 │       ├── TerminalWindow.tsx
 │       ├── SettingsWindow.tsx
-│       └── SearchWindow.tsx
+│       ├── SearchWindow.tsx
+│       └── BlogWindow.tsx
 │
 ├── hooks/
+│   └── useKeyboardShortcuts.ts
+│
+├── lib/
+│   ├── window-manager.tsx  # Window state management
+│   ├── theme.tsx           # Dark/light theme provider
+│   └── data.ts             # Static data (projects, etc.)
+│
+└── types/
+    └── index.ts           # TypeScript definitions
+```
+
+---
+
+## Features
+
+- **Desktop Environment**: Full macOS-style desktop with windows, dock, and menubar
+- **Window Management**: Draggable, resizable windows with z-index stacking
+- **Dark/Light Mode**: System-aware theme switching
+- **Keyboard Shortcuts**: Cmd+Tab window switching, Cmd+W to close
+- **Responsive Design**: Adapts to different screen sizes
+- **Performance**: Optimized with Next.js 14 and React 18 features
+
+---
+
+## Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Custom SVG icons
+- **Fonts**: SF Pro Display (macOS system font)
+
+---
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
+
+---
+
+## Deployment
+
+Deploy to Vercel, Netlify, or any static hosting service:
+
+```bash
+npm run build
+```
+
+The build output is in the `out/` directory.
+
+---
+
+## License
+
+MIT
 │   └── useKeyboardShortcuts.ts   # ⌘K search · ⌘D dark · ⌘. terminal
 │
 ├── lib/
