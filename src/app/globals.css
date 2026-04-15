@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── CSS VARIABLES ─────────────────────────────────────────────── */
+:root {
+  --desktop-bg: #e8e2d8;
+  --desktop-surface: #dfd9cf;
+  --desktop-border: #c4bfb5;
+  --desktop-border2: #b8b2a8;
+  --desktop-text: #2a2520;
+  --desktop-muted: #6b6560;
+  --desktop-subtle: #8b8580;
+  --desktop-bar: #dfd9cf;
+  --desktop-bar-b: #d4cfc9;
+  --desktop-hover: rgba(0,0,0,0.03);
+  --desktop-glass: rgba(232,226,216,0.9);
+  --win-header: #8b7355;
+  --win-header-light: #a89478;
+}
+
+/* ── BROWN/GOLD COLOR SCHEME ────────────────────────────────────── */
+:root[data-color-scheme="brown"] {
+  --win-header: #8b7355;
+  --win-header-light: #a89478;
+}
+
+/* ── OCEAN COLOR SCHEME ────────────────────────────────────────── */
+:root[data-color-scheme="ocean"] {
+  --win-header: #2c5aa0;
+  --win-header-light: #3a7bc8;
+}
+
+/* ── FOREST COLOR SCHEME ───────────────────────────────────────── */
+:root[data-color-scheme="forest"] {
+  --win-header: #2d5016;
+  --win-header-light: #3d6b1f;
+}
+
+/* ── SUNSET COLOR SCHEME ───────────────────────────────────────── */
+:root[data-color-scheme="sunset"] {
+  --win-header: #c84c1a;
+  --win-header-light: #e85c2a;
+}
+
+:root.dark {
+  --desktop-bg:       #161514;
+  --desktop-surface:  #222020;
+  --desktop-border:   #2e2c29;
+  --desktop-border2:  #3a3835;
+  --desktop-text:     #e8e4de;
+  --desktop-muted:    #8a8278;
+  --desktop-subtle:   #5a5650;
+  --desktop-bar:      #191817;
+  --desktop-bar-b:    #252321;
+  --desktop-hover:    rgba(255,255,255,0.05);
+  --desktop-glass:    rgba(22,21,20,0.82);
+  --win-header:       #8b7355;
+  --win-header-light: #a89478;
+  --win-shadow:       0 8px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
+}
+
+:root.dark[data-color-scheme="ocean"] {
+  --win-header: #2c5aa0;
+  --win-header-light: #3a7bc8;
+}
+
+:root.dark[data-color-scheme="forest"] {
+  --win-header: #2d5016;
+  --win-header-light: #3d6b1f;
+}
+
+:root.dark[data-color-scheme="sunset"] {
+  --win-header: #c84c1a;
+  --win-header-light: #e85c2a;
+}
+
+/* ── RESET ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--desktop-bg);
+  color: var(--desktop-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+/* ── SCROLLBAR ──────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--desktop-border2); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--desktop-muted); }
+
+/* Allow text selection inside windows */
+.win-body, .win-body * { user-select: text; }
+
+/* ── DOCK MAGNIFICATION ─────────────────────────────────────────── */
+.dock-item {
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+
+/* ── WINDOW ANIMATIONS ──────────────────────────────────────────── */
+@keyframes window-open {
+  from { opacity: 0; transform: scale(0.93) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes window-close {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.93) translateY(8px); }
+}
+@keyframes spotlight-in {
+  from { opacity: 0; transform: translateX(-50%) scale(0.96) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) scale(1) translateY(0); }
+}
+@keyframes folder-fan {
+  from { transform: rotate(0deg) translateY(0); }
+  to   { transform: rotate(var(--fan-deg)) translateY(-4px); }
+}
+
+.animate-window-open  { animation: window-open  0.22s cubic-bezier(0.34,1.4,0.64,1) forwards; }
+.animate-window-close { animation: window-close 0.15s ease-in forwards; }
+.animate-spotlight    { animation: spotlight-in 0.18s cubic-bezier(0.34,1.2,0.64,1) forwards; }
+
+/* ── PHOTO FOLDER STACK ─────────────────────────────────────────── */
+.photo-stack-item {
+  position: absolute;
+  transition: transform 0.25s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.photo-stack:hover .photo-stack-item:nth-child(1) { transform: rotate(-8deg)  translateX(-12px) translateY(-4px); }
+.photo-stack:hover .photo-stack-item:nth-child(2) { transform: rotate(0deg)   translateY(-6px); }
+.photo-stack:hover .photo-stack-item:nth-child(3) { transform: rotate(8deg)   translateX(12px)  translateY(-4px); }
+
+/* ── TERMINAL ───────────────────────────────────────────────────── */
+.terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #d8d8d8;
+  caret-color: #7ec8a0;
+  width: 100%;
+}
+
+/* ── FOCUS VISIBLE ──────────────────────────────────────────────── */
+:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; border-radius: 4px; }
