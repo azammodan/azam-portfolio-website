@@ -1,0 +1,9 @@
+{
+  "build": {
+    "command": "npm run build",
+    "cwd": ".",
+    "output": "out"
+  },
+  "framework": null,
+  "functions": null
+}
