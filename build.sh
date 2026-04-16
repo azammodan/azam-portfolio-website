@@ -2,7 +2,7 @@
 set -e
 
 echo "Building Next.js static export..."
-npm run build
+npm run export
 
 echo "Static export completed successfully"
 echo "Output directory: out/"
