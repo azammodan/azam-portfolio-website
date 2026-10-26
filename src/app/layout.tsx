@@ -1,23 +1,9 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { ThemeProvider } from '@/lib/theme'
-import { WindowManagerProvider } from '@/lib/window-manager'
-
 export const metadata: Metadata = {
-  title: 'Your Name | Portfolio',
-  description: 'Full stack developer portfolio',
+  title: 'Azam Modan | Beneath the Surface',
+  description: 'Cybersecurity, digital forensics, IT, and game development. Explore the work of Azam Modan, a USC Intelligence and Cyber Operations student.',
 }
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        <ThemeProvider>
-          <WindowManagerProvider>
-            {children}
-          </WindowManagerProvider>
-        </ThemeProvider>
-      </body>
-    </html>
-  )
+  return <html lang="en"><body>{children}</body></html>
 }
