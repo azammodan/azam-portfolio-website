@@ -9,3 +9,7 @@
 
 .hero-description{max-width:520px}
 @media(max-width:700px){.header-note{display:block;font-size:8px;letter-spacing:.6px;max-width:90px;line-height:1.5}header{gap:15px}.controls{gap:12px}.hero-description{max-width:310px}}
+
+/* Give the aquarium motto a prominent serif treatment. */
+.header-note{font-family:Georgia,'Times New Roman',serif;font-size:24px;letter-spacing:.2px;color:var(--ink)}
+@media(max-width:700px){.header-note{font-size:18px;max-width:130px;line-height:1.2;flex:1;min-width:0}header{gap:12px}.controls{flex-shrink:0}}
