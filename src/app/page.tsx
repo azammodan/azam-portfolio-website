@@ -39,7 +39,7 @@ export default function Home() {
   }
   function select(index: number) { setActive(index); tone(); if (typeof navigator.vibrate === 'function') navigator.vibrate(8) }
   return <main className={`${motion ? '' : 'still'} ${quiet ? 'quiet' : ''}`}>
-    <Aquarium moving={motion} />
+    <Aquarium moving={motion} scene={active} />
     <div className="vignette" />
     <header><a className="wordmark" href="#" onClick={e => {e.preventDefault(); select(0)}}>am<span> / </span></a><span className="header-note">Just Keep Swimming</span><div className="controls">
       <button aria-pressed={sound} onClick={() => {setSound(!sound); tone(!sound)}} title="Toggle menu sounds"><span aria-hidden="true">{sound ? '♫' : '♩'}</span><span>Sound {sound ? 'on' : 'off'}</span></button>
