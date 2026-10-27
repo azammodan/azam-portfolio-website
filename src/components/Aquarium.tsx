@@ -29,11 +29,20 @@ export default function Aquarium({ moving }: { moving: boolean }) {
       const glow=c.createRadialGradient(width*.78,height*.15,0,width*.7,height*.35,width*.65);glow.addColorStop(0,'#12698155');glow.addColorStop(1,'#07314b00');c.fillStyle=glow;c.fillRect(0,0,width,height)
       for(let i=0;i<6;i++){c.save();c.translate(width*(.43+i*.12)+Math.sin(t*.12+i)*20,-100);c.rotate(.22+Math.sin(t*.08+i)*.03);const g=c.createLinearGradient(0,0,0,height*1.3);g.addColorStop(0,'#7dccd011');g.addColorStop(1,'#7dccd000');c.fillStyle=g;c.beginPath();c.moveTo(0,0);c.lineTo(30,0);c.lineTo(180,height*1.3);c.lineTo(-30,height*1.3);c.fill();c.restore()}
       // Distant schools keep the left-hand reading area calm.
-      for(let i=0;i<29;i++){const x=((rand(i+1)*width+t*(5+rand(i+5)*9))%(width+180))-90;const y=height*(.16+rand(i+40)*.68)+Math.sin(t*.3+i)*12;c.globalAlpha=.12+rand(i+60)*.26;fish(x,y,.13+rand(i+20)*.25,t*2+i,'#669ba8')}
+      for(let i=0;i<48;i++){const x=((rand(i+1)*width+t*(5+rand(i+5)*9))%(width+180))-90;const y=height*(.16+rand(i+40)*.68)+Math.sin(t*.3+i)*12;c.globalAlpha=.12+rand(i+60)*.26;fish(x,y,.13+rand(i+20)*.25,t*2+i,'#669ba8')}
       c.globalAlpha=.75;ray(width*.79+Math.sin(t*.13)*width*.13,height*.29+Math.sin(t*.19)*35,t)
       c.globalAlpha=.75;fish(width*.84+Math.sin(t*.18)*width*.1,height*.61+Math.cos(t*.3)*30,1.05,t*2,'#5e9baf',true)
       c.globalAlpha=.65;fish(width*.91+Math.sin(t*.14+2)*width*.08,height*.73+Math.sin(t*.32)*22,.65,t*2+1,'#759fa5',true)
       c.globalAlpha=.5;fish(width*.65+Math.sin(t*.11)*width*.12,height*.84+Math.sin(t*.2)*15,.7,t*1.6,'#5a9297')
+      // A closer school crosses the tank in both directions.
+      for(let i=0;i<10;i++) {
+        const leftward=i%2===0, speed=9+rand(i+510)*10
+        const travel=(rand(i+520)*(width+220)+t*speed)%(width+220)
+        const x=leftward?width+110-travel:travel-110
+        const y=height*(.2+rand(i+530)*.65)+Math.sin(t*.4+i)*16
+        c.globalAlpha=.35+rand(i+540)*.25
+        fish(x,y,.38+rand(i+550)*.35,t*2+i,['#5e9baf','#759fa5','#5a9297'][i%3],leftward)
+      }
       // Translucent jellyfish with flowing tentacles.
       for(let j=0;j<2;j++){const x=width*(.88-j*.18)+Math.sin(t*.19+j)*22,y=height*(.43+j*.42)+Math.sin(t*.4+j)*13,s=j===0?25:14;c.globalAlpha=.24;const g=c.createRadialGradient(x,y,0,x,y,s*1.3);g.addColorStop(0,'#c2e8e4');g.addColorStop(1,'#5eabc355');c.fillStyle=g;c.beginPath();c.ellipse(x,y,s,s*.7,0,Math.PI,0);c.quadraticCurveTo(x,y+s*.3,x-s,y);c.fill();c.strokeStyle='#91cad5';c.lineWidth=.7;for(let k=0;k<5;k++){c.beginPath();c.moveTo(x-s*.6+k*s*.3,y);c.bezierCurveTo(x-s+k*s*.4+Math.sin(t+k)*10,y+s,x+k*3+Math.sin(t+k)*9,y+s*1.5,x-s*.5+k*s*.3,y+s*2.5);c.stroke()}}
       // Fine suspended particles.
