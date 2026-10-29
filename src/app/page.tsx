@@ -61,7 +61,7 @@ export default function Home() {
     <audio ref={music} src="/audio/vaporware.mp3" loop preload="none" onError={() => {soundWanted.current = false; setSound(false); setMusicError(true)}} />
     <Aquarium moving={motion} scene={active} />
     <div className="vignette" />
-    <header><a className="wordmark" href="#" onClick={e => {e.preventDefault(); select(0)}}>am<span> / </span></a><span className="header-note">Just Keep Swimming</span><div className="controls">
+    <header><a className="wordmark" href="#" onClick={e => {e.preventDefault(); select(0)}}>am</a><div className="controls">
       <button aria-pressed={sound} onClick={toggleSound} title="Toggle background music and menu sounds"><span aria-hidden="true">{sound ? '♫' : '♩'}</span><span>Sound {sound ? 'on' : 'off'}</span></button>
       <button aria-pressed={!motion} onClick={() => setMotion(!motion)}>{motion ? 'Ⅱ' : '▷'}<span>{motion ? 'Pause' : 'Play'}</span></button>
     </div></header>
